@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Venda - LivroTech</title>
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Barra de Navegação Superior -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="dashboard.html">
+                <i class="fas fa-book-open me-2"></i>LivroTech
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTop">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTop">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Produtos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="cadastro-produto.html">Cadastrar Produto</a></li>
+                            <li><a class="dropdown-item" href="lista-produtos.html">Listar Produtos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            Vendas
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item active" href="registro-venda.html">Registrar Venda</a></li>
+                            <li><a class="dropdown-item" href="lista-vendas.html">Listar Vendas</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Usuários
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="cadastro-usuario-admin.html">Cadastrar Usuário</a></li>
+                            <li><a class="dropdown-item" href="lista-usuarios.html">Listar Usuários</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-1"></i> Admin
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="perfil.html"><i class="fas fa-user me-2"></i>Perfil</a></li>
+                            <li><a class="dropdown-item" href="configuracoes.html"><i class="fas fa-cog me-2"></i>Configurações</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt me-2"></i>Sair</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Barra Lateral -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="fas fa-tachometer-alt me-2"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="lista-produtos.html">
+                                <i class="fas fa-book me-2"></i>
+                                Produtos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="lista-vendas.html">
+                                <i class="fas fa-shopping-cart me-2"></i>
+                                Vendas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="lista-usuarios.html">
+                                <i class="fas fa-users me-2"></i>
+                                Usuários
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="relatorios.html">
+                                <i class="fas fa-chart-bar me-2"></i>
+                                Relatórios
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contato-admin.html">
+                                <i class="fas fa-headset me-2"></i>
+                                Suporte
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Conteúdo da Página -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="lista-vendas.html">Vendas</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Registrar Venda</li>
+                    </ol>
+                </nav>
+                
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2"><i class="fas fa-shopping-cart me-2"></i>Registrar Venda</h1>
+                </div>
+
+                <div class="card border-0 shadow-sm mb-4">
+                    <div class="card-body p-4">
+                        <form>
+                            <div class="row g-3">
+                                <!-- Informações do Cliente -->
+                                <div class="col-md-12 mb-3">
+                                    <h5 class="border-bottom pb-2">Informações do Cliente</h5>
+                                </div>
+                                
+                                <div class="col-md-8 mb-3">
+                                    <label for="clienteNome" class="form-label">Cliente</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" id="clienteNome" placeholder="Nome do cliente" required>
+                                        <button class="btn btn-outline-secondary" type="button">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="clienteCpf" class="form-label">CPF</label>
+                                    <input type="text" class="form-control" id="clienteCpf" placeholder="000.000.000-00" required>
+                                </div>
+
+                                <!-- Informações do Produto -->
+                                <div class="col-md-12 mb-3">
+                                    <h5 class="border-bottom pb-2">Informações do Produto</h5>
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label for="produtoSelect" class="form-label">Produto</label>
+                                    <select class="form-select" id="produtoSelect" required>
+                                        <option selected disabled value="">Selecione um produto...</option>
+                                        <option value="1">Dom Casmurro - Machado de Assis</option>
+                                        <option value="2">O Pequeno Príncipe - Antoine de Saint-Exupéry</option>
+                                        <option value="3">Harry Potter e a Pedra Filosofal - J.K. Rowling</option>
+                                        <option value="4">A Culpa é das Estrelas - John Green</option>
+                                        <option value="5">1984 - George Orwell</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-md-3 mb-3">
+                                    <label for="quantidade" class="form-label">Quantidade</label>
+                                    <input type="number" class="form-control" id="quantidade" placeholder="1" min="1" value="1" required>
+                                </div>
+                                
+                                <div class="col-md-3 mb-3">
+                                    <label for="preco" class="form-label">Preço Unitário</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">R$</span>
+                                        <input type="text" class="form-control" id="preco" placeholder="0.00" readonly>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <button type="button" class="btn btn-secondary mt-4">
+                                        <i class="fas fa-plus me-1"></i> Adicionar Produto
+                                    </button>
+                                </div>
+
+                                <!-- Produtos Adicionados -->
+                                <div class="col-md-12 mb-3">
+                                    <div class="table-responsive">
+                                        <table class="table table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <th>Produto</th>
+                                                    <th>Quantidade</th>
+                                                    <th>Preço Unit.</th>
+                                                    <th>Subtotal</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Dom Casmurro - Machado de Assis</td>
+                                                    <td>1</td>
+                                                    <td>R$ 29,90</td>
+                                                    <td>R$ 29,90</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-sm btn-outline-danger">
+                                                            <i class="fas fa-times"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <th colspan="3" class="text-end">Total:</th>
+                                                    <th>R$ 29,90</th>
+                                                    <th></th>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <!-- Informações da Venda -->
+                                <div class="col-md-12 mb-3">
+                                    <h5 class="border-bottom pb-2">Informações da Venda</h5>
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label for="dataVenda" class="form-label">Data da Venda</label>
+                                    <input type="date" class="form-control" id="dataVenda" value="2025-04-17" required>
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label for="formaPagamento" class="form-label">Forma de Pagamento</label>
+                                    <select class="form-select" id="formaPagamento" required>
+                                        <option selected disabled value="">Selecione...</option>
+                                        <option value="dinheiro">Dinheiro</option>
+                                        <option value="cartao">Cartão de Crédito/Débito</option>
+                                        <option value="pix">PIX</option>
+                                        <option value="boleto">Boleto Bancário</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-md-12 mb-3">
+                                    <label for="observacoes" class="form-label">Observações</label>
+                                    <textarea class="form-control" id="observacoes" rows="3"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-end gap-2 mt-4">
+                                <a href="lista-vendas.html" class="btn btn-secondary">Voltar</a>
+                                <button type="reset" class="btn btn-warning">Limpar</button>
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Rodapé -->
+                <footer class="bg-white p-3 mt-4 text-center text-muted">
+                    <div>
+                        &copy; 2025 LivroTech. Todos os direitos reservados.
+                    </div>
+                </footer>
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+                                        

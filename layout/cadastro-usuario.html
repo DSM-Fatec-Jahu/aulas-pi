@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário - LivroTech</title>
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header class="bg-primary text-white">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <i class="fas fa-book-open me-2"></i>LivroTech
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Início</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="cadastro-usuario.html">Cadastrar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contato.html">Contato</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-lg border-0 rounded-lg mb-5 animated">
+                        <div class="card-header bg-primary text-white text-center py-3">
+                            <h3 class="mb-0"><i class="fas fa-user-plus me-2"></i>Cadastro de Usuário</h3>
+                        </div>
+                        <div class="card-body p-4">
+                            <form>
+                                <!-- Informações Pessoais -->
+                                <h5 class="border-bottom pb-2 mb-4">Informações Pessoais</h5>
+                                <div class="row mb-3">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="nomeCompleto" class="form-label">Nome Completo</label>
+                                        <input type="text" class="form-control" id="nomeCompleto" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="cpf" class="form-label">CPF</label>
+                                        <input type="text" class="form-control" id="cpf" placeholder="123.456.789-00" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="dataNascimento" class="form-label">Data de Nascimento</label>
+                                        <input type="date" class="form-control" id="dataNascimento" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="telefone" class="form-label">Celular</label>
+                                        <input type="tel" class="form-control" id="telefone" placeholder="(00) 00000-0000" required>
+                                    </div>
+                                </div>
+
+                                <!-- Endereço -->
+                                <h5 class="border-bottom pb-2 mb-4">Endereço</h5>
+                                <div class="row mb-3">
+                                    <div class="col-md-9 mb-3">
+                                        <label for="rua" class="form-label">Rua</label>
+                                        <input type="text" class="form-control" id="rua" required>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="numero" class="form-label">Número</label>
+                                        <input type="text" class="form-control" id="numero" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="bairro" class="form-label">Bairro</label>
+                                        <input type="text" class="form-control" id="bairro" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="cidade" class="form-label">Cidade</label>
+                                        <input type="text" class="form-control" id="cidade" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="estado" class="form-label">Estado</label>
+                                        <select class="form-select" id="estado" required>
+                                            <option selected disabled value="">Selecione...</option>
+                                            <option value="AC">Acre</option>
+                                            <option value="AL">Alagoas</option>
+                                            <option value="AP">Amapá</option>
+                                            <option value="AM">Amazonas</option>
+                                            <option value="BA">Bahia</option>
+                                            <option value="CE">Ceará</option>
+                                            <option value="DF">Distrito Federal</option>
+                                            <option value="ES">Espírito Santo</option>
+                                            <option value="GO">Goiás</option>
+                                            <option value="MA">Maranhão</option>
+                                            <option value="MT">Mato Grosso</option>
+                                            <option value="MS">Mato Grosso do Sul</option>
+                                            <option value="MG">Minas Gerais</option>
+                                            <option value="PA">Pará</option>
+                                            <option value="PB">Paraíba</option>
+                                            <option value="PR">Paraná</option>
+                                            <option value="PE">Pernambuco</option>
+                                            <option value="PI">Piauí</option>
+                                            <option value="RJ">Rio de Janeiro</option>
+                                            <option value="RN">Rio Grande do Norte</option>
+                                            <option value="RS">Rio Grande do Sul</option>
+                                            <option value="RO">Rondônia</option>
+                                            <option value="RR">Roraima</option>
+                                            <option value="SC">Santa Catarina</option>
+                                            <option value="SP">São Paulo</option>
+                                            <option value="SE">Sergipe</option>
+                                            <option value="TO">Tocantins</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="cep" class="form-label">CEP</label>
+                                        <input type="text" class="form-control" id="cep" placeholder="00000-000" required>
+                                    </div>
+                                </div>
+
+                                <!-- Informações de Acesso -->
+                                <h5 class="border-bottom pb-2 mb-4">Informações de Acesso</h5>
+                                <div class="row mb-3">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="email" class="form-label">E-mail</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="senha" class="form-label">Senha</label>
+                                        <input type="password" class="form-control" id="senha" required>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="confirmarSenha" class="form-label">Confirmar Senha</label>
+                                        <input type="password" class="form-control" id="confirmarSenha" required>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="tipoUsuario" class="form-label">Tipo de Usuário</label>
+                                        <select class="form-select" id="tipoUsuario" required>
+                                            <option selected disabled value="">Selecione...</option>
+                                            <option value="cliente">Cliente</option>
+                                            <option value="funcionario">Funcionário</option>
+                                            <option value="administrador">Administrador</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="termos" required>
+                                    <label class="form-check-label" for="termos">
+                                        Concordo com os <a href="#" class="text-decoration-none">termos e condições</a>
+                                    </label>
+                                </div>
+
+                                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                    <button type="reset" class="btn btn-secondary btn-lg">Limpar</button>
+                                    <button type="submit" class="btn btn-primary btn-lg">Cadastrar</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer text-center py-3">
+                            Já tem uma conta? <a href="login.html" class="text-decoration-none">Faça login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-book-open me-2"></i>LivroTech</h5>
+                    <p>Sistema de Gestão para Livrarias</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-instagram"></i></a></li>
+                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-twitter"></i></a></li>
+                    </ul>
+                    <p class="mt-2 mb-0">&copy; 2025 LivroTech. Todos os direitos reservados.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

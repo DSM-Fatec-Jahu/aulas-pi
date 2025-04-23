@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - LivroTech</title>
+    <!-- Bootstrap 5.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Barra de Navegação Superior -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="dashboard.html">
+                <i class="fas fa-book-open me-2"></i>LivroTech
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTop">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTop">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Produtos
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="cadastro-produto.html">Cadastrar Produto</a></li>
+                            <li><a class="dropdown-item" href="lista-produtos.html">Listar Produtos</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Vendas
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="registro-venda.html">Registrar Venda</a></li>
+                            <li><a class="dropdown-item" href="lista-vendas.html">Listar Vendas</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Usuários
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="cadastro-usuario-admin.html">Cadastrar Usuário</a></li>
+                            <li><a class="dropdown-item" href="lista-usuarios.html">Listar Usuários</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-1"></i> Admin
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="perfil.html"><i class="fas fa-user me-2"></i>Perfil</a></li>
+                            <li><a class="dropdown-item active" href="configuracoes.html"><i class="fas fa-cog me-2"></i>Configurações</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="login.html"><i class="fas fa-sign-out-alt me-2"></i>Sair</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Barra Lateral -->
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <div class="position-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="dashboard.html">
+                                <i class="fas fa-tachometer-alt me-2"></i>
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="lista-produtos.html">
+                                <i class="fas fa-book me-2"></i>
+                                Produtos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="lista-vendas.html">
+                                <i class="fas fa-shopping-cart me-2"></i>
+                                Vendas
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="lista-usuarios.html">
+                                <i class="fas fa-users me-2"></i>
+                                Usuários
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="relatorios.html">
+                                <i class="fas fa-chart-bar me-2"></i>
+                                Relatórios
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contato-admin.html">
+                                <i class="fas fa-headset me-2"></i>
+                                Suporte
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Conteúdo da Página -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="dashboard.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Configurações</li>
+                    </ol>
+                </nav>
+                
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2"><i class="fas fa-cog me-2"></i>Configurações do Sistema</h1>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-3 mb-4">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action active" data-bs-toggle="list" data-bs-target="#geral">
+                                <i class="fas fa-sliders-h me-2"></i>Geral
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="list" data-bs-target="#notificacoes">
+                                <i class="fas fa-bell me-2"></i>Notificações
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="list" data-bs-target="#aparencia">
+                                <i class="fas fa-palette me-2"></i>Aparência
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="list" data-bs-target="#backup">
+                                <i class="fas fa-database me-2"></i>Backup e Restauração
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="list" data-bs-target="#integracao">
+                                <i class="fas fa-plug me-2"></i>Integrações
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action" data-bs-toggle="list" data-bs-target="#sistema">
+                                <i class="fas fa-info-circle me-2"></i>Informações do Sistema
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-9">
+                        <div class="tab-content">
+                            <!-- Configurações Gerais -->
+                            <div class="tab-pane fade show active" id="geral">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-header bg-white">
+                                        <h5 class="card-title mb-0">Configurações Gerais</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="nomeEmpresa" class="form-label">Nome da Empresa</label>
+                                                <input type="text" class="form-control" id="nomeEmpresa" value="LivroTech Livraria">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="emailContato" class="form-label">E-mail de Contato</label>
+                                                <input type="email" class="form-control" id="emailContato" value="contato@livrotech.com.br">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="telefoneContato" class="form-label">Telefone de Contato</label>
+                                                <input type="tel" class="form-control" id="telefoneContato" value="(11) 4002-8922">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="moeda" class="form-label">Moeda</label>
+                                                <select class="form-select" id="moeda">
+                                                    <option value="BRL" selected>Real (R$)</option>
+                                                    <option value="USD">Dólar ($)</option>
+                                                    <option value="EUR">Euro (€)</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="timezone" class="form-label">Fuso Horário</label>
+                                                <select class="form-select" id="timezone">
+                                                    <option value="America/Sao_Paulo" selected>Brasília (GMT-3)</option>
+                                                    <option value="America/Manaus">Manaus (GMT-4)</option>
+                                                    <option value="America/Cuiaba">Cuiabá (GMT-4)</option>
+                                                    <option value="America/Rio_Branco">Rio Branco (GMT-5)</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="formatoData" class="form-label">Formato de Data</label>
+                                                <select class="form-select" id="formatoData">
+                                                    <option value="DD/MM/YYYY" selected>DD/MM/AAAA</option>
+                                                    <option value="MM/DD/YYYY">MM/DD/AAAA</option>
+                                                    <option value="YYYY-MM-DD">AAAA-MM-DD</option>
+                                                </select>
+                                            </div>
+                                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Configurações de Notificações -->
+                            <div class="tab-pane fade" id="notificacoes">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-header bg-white">
+                                        <h5 class="card-title mb-0">Configurações de Notificações</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <h6 class="mb-3">Notificações por E-mail</h6>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="notifNovaVenda" checked>
+                                                <label class="form-check-label" for="notifNovaVenda">Nova venda realizada</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="notifEstoqueBaixo" checked>
+                                                <label class="form-check-label" for="notifEstoqueBaixo">Produto com estoque baixo</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="notifNovoUsuario" checked>
+                                                <label class="form-check-label" for="notifNovoUsuario">Novo usuário cadastrado</label>
+                                            </div>
+
+                                            <hr class="my-4">
+
+                                            <h6 class="mb-3">Notificações no Sistema</h6>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="notifSistemaVenda" checked>
+                                                <label class="form-check-label" for="notifSistemaVenda">Nova venda realizada</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="notifSistemaEstoque" checked>
+                                                <label class="form-check-label" for="notifSistemaEstoque">Produto com estoque baixo</label>
+                                            </div>
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="notifSistemaUsuario" checked>
+                                                <label class="form-check-label" for="notifSistemaUsuario">Novo usuário cadastrado</label>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label for="limiteEstoque" class="form-label">Limite de estoque para alerta</label>
+                                                <input type="number" class="form-control" id="limiteEstoque" value="10">
+                                                <div class="form-text">Receba alertas quando o estoque estiver abaixo deste valor.</div>
+                                            </div>
+
+                                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Configurações de Aparência -->
+                            <div class="tab-pane fade" id="aparencia">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-header bg-white">
+                                        <h5 class="card-title mb-0">Configurações de Aparência</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="mb-4">
+                                                <label class="form-label">Tema</label>
+                                                <div class="d-flex gap-3">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="tema" id="temaClaro" checked>
+                                                        <label class="form-check-label" for="temaClaro">
+                                                            Claro
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="tema" id="temaEscuro">
+                                                        <label class="form-check-label" for="temaEscuro">
+                                                            Escuro
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="tema" id="temaSistema">
+                                                        <label class="form-check-label" for="temaSistema">
+                                                            Sistema
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-4">
+                                                <label for="corPrimaria" class="form-label">Cor Primária</label>
+                                                <div class="d-flex gap-2 mb-2">
+                                                    <div class="color-option active" style="background-color: #1a73e8;"></div>
+                                                    <div class="color-option" style="background-color: #28a745;"></div>
+                                                    <div class="color-option" style="background-color: #dc3545;"></div>
+                                                    <div class="color-option" style="background-color: #fd7e14;"></div>
+                                                    <div class="color-option" style="background-color: #6f42c1;"></div>
+                                                </div>
+                                                <input type="color" class="form-control form-control-color" id="corPrimaria" value="#1a73e8" title="Escolha uma cor">
+                                            </div>
+
+                                            <div class="mb-4">
+                                                <label for="fonteTamanho" class="form-label">Tamanho da Fonte</label>
+                                                <select class="form-select" id="fonteTamanho">
+                                                    <option value="small">Pequeno</option>
+                                                    <option value="medium" selected>Médio</option>
+                                                    <option value="large">Grande</option>
+                                                </select>
+                                            </div>
+                                            
+                                            <div class="mb-4">
+                                                <label class="form-label">Layout</label>
+                                                <div class="d-flex gap-3">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="layout" id="layoutFluido" checked>
+                                                        <label class="form-check-label" for="layoutFluido">
+                                                            Fluido
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="layout" id="layoutFixo">
+                                                        <label class="form-check-label" for="layoutFixo">
+                                                            Fixo
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3 form-check">
+                                                <input type="checkbox" class="form-check-input" id="animacoes" checked>
+                                                <label class="form-check-label" for="animacoes">Habilitar animações</label>
+                                            </div>
+
+                                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                                <button type="button" class="btn btn-secondary">Restaurar Padrão</button>
+                                                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Backup e Restauração -->
+                            <div class="tab-pane fade" id="backup">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-header bg-white">
+                                        <h5 class="card-title mb-0">Backup e Restauração</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="alert alert-info">
+                                            <i class="fas fa-info-circle me-2"></i>
+                                            Recomendamos realizar backups regularmente para garantir a segurança dos seus dados.
+                                        </div>
+
+                                        <h6 class="mb-3">Backup Manual</h6>
+                                        <p>Crie um backup completo do sistema e faça o download.</p>
+                                        <div class="d-grid gap-2 d-md-flex mb-4">
+                                            <button type="button" class="btn btn-primary">
+                                                <i class="fas fa-download me-2"></i>Fazer Backup Agora
+                                            </button>
+                                        </div>
+
+                                        <h6 class="mb-3">Backup Automático</h6>
+                                        <div class="mb-3">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" id="backupAutomatico" checked>
+                                                <label class="form-check-label" for="backupAutomatico">
+                                                    Habilitar backup automático
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="frequenciaBackup" class="form-label">Frequência</label>
+                                            <select class="form-select" id="frequenciaBackup">
+                                                <option value="daily">Diário</option>
+                                                <option value="weekly" selected>Semanal</option>
+                                                <option value="monthly">Mensal</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="horaBackup" class="form-label">Hora do Backup</label>
+                                            <input type="time" class="form-control" id="horaBackup" value="03:00">
+                                        </div>
+                                        <div class="mb-4">
+                                            <label for="manterBackups" class="form-label">Manter backups</label>
+                                            <select class="form-select" id="manterBackups">
+                                                <option value="3">Últimos 3 backups</option>
+                                                <option value="5" selected>Últimos 5 backups</option>
+                                                <option value="10">Últimos 10 backups</option>
+                                                <option value="0">Todos os backups</option>
+                                            </select>
+                                        </div>
+
+                                        <hr class="my-4">
+
+                                        <h6 class="mb-3">Restaurar Backup</h6>
+                                        <p>Selecione um arquivo de backup para restaurar o sistema.</p>
+                                        <div class="input-group mb-3">
+                                            <input type="file" class="form-control" id="arquivoBackup">
+                                            <button class="btn btn-secondary" type="button">Restaurar</button>
+                                        </div>
+                                        <div class="alert alert-warning">
+                                            <i class="fas fa-exclamation-triangle me-2"></i>
+                                            Atenção: A restauração substituirá todos os dados atuais. Esta ação não pode ser desfeita.
+                                        </div>
+
+                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                            <button type="button" class="btn btn-primary">Salvar Configurações</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Integrações -->
+                            <div class="tab-pane fade" id="integracao">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-header bg-white">
+                                        <h5 class="card-title mb-0">Integrações</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="integration-item mb-4 pb-3 border-bottom">
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fab fa-google fa-2x text-primary me-3"></i>
+                                                    <div>
+                                                        <h6 class="mb-0">Google Drive</h6>
+                                                        <small class="text-muted">Armazenamento de arquivos na nuvem</small>
+                                                    </div>
+                                                </div>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="integracaoGDrive" checked>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <p class="text-success mb-2">
+                                                    <i class="fas fa-check-circle me-1"></i>
+                                                    Conectado como livrotech@gmail.com
+                                                </p>
+                                                <button class="btn btn-sm btn-outline-danger">Desconectar</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="integration-item mb-4 pb-3 border-bottom">
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fab fa-mailchimp fa-2x text-primary me-3"></i>
+                                                    <div>
+                                                        <h6 class="mb-0">Mailchimp</h6>
+                                                        <small class="text-muted">Marketing por e-mail</small>
+                                                    </div>
+                                                </div>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="integracaoMailchimp" checked>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <p class="text-success mb-2">
+                                                    <i class="fas fa-check-circle me-1"></i>
+                                                    Conectado como LivroTech
+                                                </p>
+                                                <button class="btn btn-sm btn-outline-danger">Desconectar</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="integration-item mb-4 pb-3 border-bottom">
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fab fa-whatsapp fa-2x text-primary me-3"></i>
+                                                    <div>
+                                                        <h6 class="mb-0">WhatsApp Business API</h6>
+                                                        <small class="text-muted">Comunicação com clientes</small>
+                                                    </div>
+                                                </div>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="integracaoWhatsapp">
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <button class="btn btn-sm btn-outline-primary">Conectar</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="integration-item mb-4 pb-3 border-bottom">
+                                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                                <div class="d-flex align-items-center">
+                                                    <i class="fas fa-money-bill-wave fa-2x text-primary me-3"></i>
+                                                    <div>
+                                                        <h6 class="mb-0">Gateway de Pagamento</h6>
+                                                        <small class="text-muted">Processamento de pagamentos</small>
+                                                    </div>
+                                                </div>
+                                                <div class="form-check form-switch">
+                                                    <input class="form-check-input" type="checkbox" id="integracaoPagamento" checked>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <p class="text-success mb-2">
+                                                    <i class="fas fa-check-circle me-1"></i>
+                                                    Conectado com MercadoPago
+                                                </p>
+                                                <button class="btn btn-sm btn-outline-secondary">Configurar</button>
+                                                <button class="btn btn-sm btn-outline-danger">Desconectar</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                            <button type="button" class="btn btn-primary">Adicionar Nova Integração</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Informações do Sistema -->
+                            <div class="tab-pane fade" id="sistema">
+                                <div class="card border-0 shadow-sm">
+                                    <div class="card-header bg-white">
+                                        <h5 class="card-title mb-0">Informações do Sistema</h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row mb-4">
+                                            <div class="col-md-6">
+                                                <h6>Informações do Sistema</h6>
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">Nome do Sistema</th>
+                                                            <td>LivroTech</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Versão</th>
+                                                            <td>2.1.5</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Data de Instalação</th>
+                                                            <td>10/03/2025</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Última Atualização</th>
+                                                            <td>15/04/2025</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Licença</th>
+                                                            <td>Enterprise</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h6>Informações do Servidor</h6>
+                                                <table class="table table-sm">
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">Sistema Operacional</th>
+                                                            <td>Linux Ubuntu 24.04</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Servidor Web</th>
+                                                            <td>Apache 2.4.58</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">PHP</th>
+                                                            <td>8.3.4</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Banco de Dados</th>
+                                                            <td>MySQL 8.2.0</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row">Status</th>
+                                                            <td><span class="badge bg-success">Operacional</span></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-4">
+                                            <h6>Histórico de Atualizações</h6>
+                                            <div class="table-responsive">
+                                                <table class="table table-sm">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Versão</th>
+                                                            <th>Data</th>
+                                                            <th>Descrição</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>2.1.5</td>
+                                                            <td>15/04/2025</td>
+                                                            <td>Correções de bugs e melhorias de desempenho</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2.1.0</td>
+                                                            <td>28/03/2025</td>
+                                                            <td>Adição de novos relatórios e melhorias de interface</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2.0.5</td>
+                                                            <td>15/03/2025</td>
+                                                            <td>Correções de segurança e otimização</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>2.0.0</td>
+                                                            <td>10/03/2025</td>
+                                                            <td>Lançamento da nova versão com redesign completo</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex justify-content-between">
+                                            <button type="button" class="btn btn-outline-secondary">
+                                                <i class="fas fa-file-alt me-2"></i>Ver Logs do Sistema
+                                            </button>
+                                            <button type="button" class="btn btn-primary">
+                                                <i class="fas fa-sync me-2"></i>Verificar Atualizações
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rodapé -->
+                <footer class="bg-white p-3 mt-4 text-center text-muted">
+                    <div>
+                        &copy; 2025 LivroTech. Todos os direitos reservados.
+                    </div>
+                </footer>
+            </main>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5.3 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        .color-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        .color-option.active {
+            border-color: #333;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 20px;
+            padding-left: 20px;
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -10px;
+            height: 100%;
+            border-left: 2px solid #dee2e6;
+        }
+        
+        .timeline-item:after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: -19px;
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border: 2px solid #1a73e8;
+            border-radius: 50%;
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: #1a73e8;
+            margin-bottom: 5px;
+        }
+        
+        .integration-item .fab, .integration-item .fas {
+            width: 40px;
+            text-align: center;
+        }
+    </style>
+</body>
+</html>
