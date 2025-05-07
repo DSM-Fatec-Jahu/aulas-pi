@@ -1,28 +1,34 @@
-3. Autenticação e Autorização
-3.1 Model de Autenticação
-Crie o arquivo app/Models/Auth.php:
-php<?php
-namespace App\Models;
+# Aula 4: Autenticação e Autorização no Projeto LivroTech
 
-use App\Core\Database;
-use PDO;
+## 📋 Sumário da Aula
 
-class Auth {
-    // Inicia a sessão se não estiver iniciada
-    private static function iniciarSessao() {
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
-    }
-    
-    // Verifica credenciais e realiza login
-    public static function login($email, $senha) {
-        self::iniciarSessao();
-        
-        // Busca o usuário pelo email
-        $pdo = Database::conectar();
-        $sql = "SELECT id_usuario, nome, email, senha, tipo FROM usuarios WHERE emailTentar novamenteClaude atingiu o limite máximo de caracteres para uma mensagem e pausou sua resposta. Você pode escrever Continue para prosseguir com a conversa.RAContinuarEditarVou continuar com o desenvolvimento do modelo de autenticação:
-php<?php
+- [1. Introdução](#1-introdução)
+- [2. Sistema de Autenticação](#2-sistema-de-autenticação)
+  - [2.1 Model de Autenticação](#21-model-de-autenticação)
+  - [2.2 Controller de Autenticação](#22-controller-de-autenticação)
+  - [2.3 View de Login](#23-view-de-login)
+- [3. Configuração de Rotas](#3-configuração-de-rotas)
+- [4. Conclusão e Próximos Passos](#4-conclusão-e-próximos-passos)
+
+## 1. Introdução
+
+Nesta aula, vamos implementar um sistema de autenticação e autorização seguro para o projeto LivroTech. Isso permitirá:
+
+- Login e logout de usuários
+- Proteção de rotas administrativas
+- Verificação de permissões baseada no tipo de usuário
+- Feedback visual para ações de autenticação
+
+Continuaremos usando a estrutura MVC (Model-View-Controller) para manter o código organizado e facilitar a manutenção.
+
+## 2. Sistema de Autenticação
+
+### 2.1 Model de Autenticação
+
+Crie o arquivo `app/Models/Auth.php`:
+
+```php
+<?php
 namespace App\Models;
 
 use App\Core\Database;
@@ -132,9 +138,14 @@ class Auth {
         }
     }
 }
-3.2 Controller de Autenticação
-Crie o arquivo app/Controllers/AuthController.php:
-php<?php
+```
+
+### 2.2 Controller de Autenticação
+
+Crie o arquivo `app/Controllers/AuthController.php`:
+
+```php
+<?php
 namespace App\Controllers;
 
 use App\Models\Auth;
@@ -276,9 +287,14 @@ class AuthController {
         exit;
     }
 }
-3.3 View de Login
-A view de login já existe em app/Views/auth/login.php, mas precisamos atualizar para processar os dados enviados:
-php<!DOCTYPE html>
+```
+
+### 2.3 View de Login
+
+A view de login já existe em `app/Views/auth/login.php`, mas precisamos atualizá-la para processar os dados enviados:
+
+```php
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -417,9 +433,14 @@ php<!DOCTYPE html>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-4. Configuração de Rotas
-Atualize o arquivo public/index.php para incluir as novas rotas:
-php<?php
+```
+
+## 3. Configuração de Rotas
+
+Atualize o arquivo `public/index.php` para incluir as novas rotas de autenticação:
+
+```php
+<?php
 // Importa o autoload do Composer para carregar as classes
 require __DIR__ . '/../vendor/autoload.php';
 
@@ -551,25 +572,43 @@ else if (preg_match('#^/usuarios/(\d+)/excluir$#', $url, $matches)) {
 http_response_code(404);
 echo '<h1>404 - Página não encontrada</h1>';
 exit;
-5. Conclusão e Próximos Passos
+```
+
+## 4. Conclusão e Próximos Passos
+
 Nesta aula, desenvolvemos:
 
-CRUD Completo de Usuários:
+### Sistema de Autenticação e Autorização:
 
-Model completo com todas as operações (listar, buscar, inserir, atualizar, excluir)
-Controller para processar requisições e manipular a lógica de negócio
-Views para exibir formulários e listas de usuários
+- **Autenticação Segura**: Implementamos login/logout com verificação de senhas criptografadas
+- **Sessões Seguras**: Gerenciamento adequado de sessões para informações do usuário
+- **Controle de Acesso**: Proteção de rotas com base em diferentes níveis de usuário
+- **Feedback Visual**: Mensagens de erro e sucesso para melhor experiência do usuário
 
+### Próximos Passos:
 
-Sistema de Autenticação e Autorização:
+1. **Aprimorar o CRUD de Usuários**:
+   - Adicionar paginação para listas grandes
+   - Implementar filtros e busca de usuários
+   - Melhorar a validação de dados
 
-Login/logout seguro usando criptografia de senhas e sessões
-Proteção de rotas com diferentes níveis de acesso
-Validação de dados e feedback para o usuário
+2. **Expandir para outros Módulos**:
+   - CRUD de Produtos/Livros
+   - Gerenciamento de Estoque
+   - Sistema de Vendas e Controle de Caixa
 
+3. **Melhorias de Segurança**:
+   - Implementar proteção contra CSRF (Cross-Site Request Forgery)
+   - Adicionar sistema de logs de atividades
+   - Configurar regras de firewall e limitação de requisições
 
-Roteamento Aprimorado:
+4. **Otimizações e Refatorações**:
+   - Implementar um sistema de cache para consultas frequentes
+   - Refatorar o código para maior reusabilidade
+   - Adicionar testes automatizados
 
-Configuração de rotas públicas e protegidas
-Uso de expressões regulares para capturar parâmetros da URL
-Verificação de permissões para cada rota
+Com o sistema de autenticação e autorização implementado, o projeto LivroTech agora possui uma camada de segurança essencial para proteger tanto os recursos do sistema quanto os dados dos usuários. A estrutura organizada que desenvolvemos facilita a expansão e manutenção do sistema no futuro.
+
+---
+
+**Lembre-se**: A segurança é um processo contínuo. A implementação atual é um bom ponto de partida, mas sempre monitore e atualize os mecanismos de segurança conforme necessário.
