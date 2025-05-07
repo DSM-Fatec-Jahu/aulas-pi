@@ -232,6 +232,57 @@ class UsuarioController {
             $_SESSION['tipo_mensagem'] = "danger";
             header('Location: /usuarios');
             exit;
+```
+
+## 4. Conclusão e Próximos Passos
+
+Nesta aula, implementamos um CRUD completo para usuários no sistema LivroTech. Isso inclui:
+
+### O que foi desenvolvido:
+
+1. **Model de Usuário Completo**:
+   - Operações de busca, inserção, atualização e exclusão
+   - Criptografia segura de senhas com `password_hash()`
+   - Métodos especializados para busca por email e ID
+
+2. **Controller de Usuário**:
+   - Processamento e validação de formulários
+   - Gerenciamento de fluxo entre Model e View
+   - Tratamento de erros e feedback para o usuário
+
+3. **Views para CRUD de Usuários**:
+   - Formulário para criação/edição
+   - Listagem com ações (visualizar, editar, excluir)
+   - Exibição de mensagens de sucesso/erro
+
+4. **Sistema de Rotas**:
+   - Definição de rotas para cada operação CRUD
+   - Captura de parâmetros dinâmicos
+   - Separação entre rotas públicas e administrativas
+
+### Próximos Passos:
+
+1. **Implementar Autenticação e Autorização**:
+   - Sistema de login/logout
+   - Proteção de rotas administrativas
+   - Controle de acesso baseado no tipo de usuário
+
+2. **Expandir para outros Módulos**:
+   - CRUD de produtos/livros
+   - Gerenciamento de vendas
+   - Dashboard com estatísticas
+
+3. **Melhorias de Segurança**:
+   - Validação mais rigorosa de entradas
+   - Proteção contra CSRF (Cross-Site Request Forgery)
+   - Logs de atividades administrativas
+
+4. **Otimizações e Refinamentos**:
+   - Paginação para listas grandes
+   - Filtros e busca avançada
+   - Melhorias de UX/UI
+
+Com a base de CRUD que desenvolvemos, você pode facilmente expandir o sistema seguindo o mesmo padrão para outros elementos como produtos, categorias, vendas, etc. O padrão MVC implementado torna a manutenção e expansão do sistema muito mais organizadas e eficientes.
         }
         require __DIR__ . '/../Views/usuarios/form-usuario.php';
     }
@@ -606,3 +657,141 @@ Também precisamos atualizar a visualização da lista de usuários (`app/Views/
     </div>
 </div>
 ```
+
+## 3. Configuração de Rotas
+
+Para que o CRUD de usuários funcione corretamente, precisamos configurar as rotas no nosso front controller. Vamos atualizar o arquivo `public/index.php` para incluir todas as rotas necessárias:
+
+```php
+<?php
+// Importa o autoload do Composer para carregar as classes
+require __DIR__ . '/../vendor/autoload.php';
+
+// Inicia a sessão para mensagens flash e autenticação
+session_start();
+
+use App\Models\Usuario;
+use App\Controllers\UsuarioController;
+
+// Injeta o conteudo das páginas de rota dentro do template base.php
+function render($view, $data = [])
+{
+    extract($data);
+    ob_start();
+    // Carrega a página da rota
+    require __DIR__ . '/../app/Views/' . $view;
+    $content = ob_get_clean();
+    // Carrega o template base.php
+    require __DIR__ . '/../app/Views/layouts/base.php';
+}
+
+function render_sem_login($view, $data = [])
+{
+    extract($data);
+    ob_start();
+    $content = ob_get_clean();
+    // Carrega a página da rota
+    require __DIR__ . '/../app/Views/' . $view;
+}
+
+// Instancia o controlador de usuários
+$usuarioController = new UsuarioController();
+
+// Obtem a URL da requisição da navegação
+$url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+// Rotas públicas (sem autenticação)
+if ($url == "/" || $url == "/index.php") {
+    header('Location: /entrar');
+    exit;
+} else if ($url == '/sobre') {
+    render_sem_login('sobre.php', ['title' => 'Sobre o Sistema - LivroTech']);
+    exit;
+} else if ($url == '/entrar') {
+    render_sem_login('auth/login.php', ['title' => 'Entrar no Sistema - LivroTech']);
+    exit;
+}
+
+// Rotas do Dashboard e administrativas
+if ($url == "/dashboard") {
+    render('dashboard.php', ['title' => 'Dashboard - LivroTech']);
+    exit;
+}
+
+// Rotas de Usuários
+
+// Listar todos os usuários
+if ($url == "/usuarios") {
+    $usuarios = Usuario::buscarTodos();
+    render("usuarios/listar-usuarios.php", [
+        'title' => 'Usuários - LivroTech', 
+        "usuarios" => $usuarios
+    ]);
+    exit;
+} 
+
+// Formulário de novo usuário
+else if ($url == "/usuarios/novo") {
+    render("usuarios/form-usuario.php", ['title' => 'Cadastrar Usuário - LivroTech']);
+    exit;
+}
+
+// Salvar novo usuário (recebe POST do formulário)
+else if ($url == "/usuarios/salvar" && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    $usuarioController->salvar();
+    exit;
+}
+
+// Ver detalhes de um usuário específico
+else if (preg_match('#^/usuarios/(\d+)$#', $url, $matches)) {
+    $id = (int)$matches[1];
+    $usuario = Usuario::buscarPorId($id);
+    if (!$usuario) {
+        $_SESSION['mensagem'] = "Usuário não encontrado!";
+        $_SESSION['tipo_mensagem'] = "danger";
+        header('Location: /usuarios');
+        exit;
+    }
+    render("usuarios/ver-usuario.php", [
+        'title' => 'Detalhes do Usuário - LivroTech',
+        'usuario' => $usuario
+    ]);
+    exit;
+}
+
+// Formulário para editar usuário
+else if (preg_match('#^/usuarios/(\d+)/editar$#', $url, $matches)) {
+    $id = (int)$matches[1];
+    $usuario = Usuario::buscarPorId($id);
+    if (!$usuario) {
+        $_SESSION['mensagem'] = "Usuário não encontrado!";
+        $_SESSION['tipo_mensagem'] = "danger";
+        header('Location: /usuarios');
+        exit;
+    }
+    render("usuarios/form-usuario.php", [
+        'title' => 'Editar Usuário - LivroTech',
+        'usuario' => $usuario
+    ]);
+    exit;
+}
+
+// Processar atualização de usuário (recebe POST do formulário de edição)
+else if (preg_match('#^/usuarios/(\d+)/atualizar$#', $url, $matches) && $_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = (int)$matches[1];
+    $usuarioController->atualizar($id);
+    exit;
+}
+
+// Excluir usuário
+else if (preg_match('#^/usuarios/(\d+)/excluir$#', $url, $matches)) {
+    $id = (int)$matches[1];
+    $usuarioController->excluir($id);
+    exit;
+}
+
+// Para qualquer outra rota não encontrada
+http_response_code(404);
+echo '<h1>404 - Página não encontrada</h1>';
+// render('404.php', ['title' => 'Página não encontrada - LivroTech']);
+exit;
