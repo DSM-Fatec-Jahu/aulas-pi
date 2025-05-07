@@ -1,26 +1,30 @@
-Aula 3: Sistema de CRUD e Autenticação Segura para Projeto LivroTech
-Sumário
+# Aula 3: Sistema de CRUD e Autenticação Segura para Projeto LivroTech
 
-Objetivos e Estrutura
-CRUD de Usuários
+## 📋 Sumário da Aula
 
-Model de Usuário Completo
-Controller de Usuário
-Views de Usuários
+- [1. Objetivos e Estrutura](#1-objetivos-e-estrutura)
+- [2. CRUD de Usuários](#2-crud-de-usuários)
+  - [2.1 Model de Usuário Completo](#21-model-de-usuário-completo)
+  - [2.2 Controller de Usuário](#22-controller-de-usuário)
+  - [2.3 Views de Usuários](#23-views-de-usuários)
+- [3. Configuração de Rotas](#3-configuração-de-rotas)
+- [4. Conclusão e Próximos Passos](#4-conclusão-e-próximos-passos)
 
-Configuração de Rotas
-Conclusão e Próximos Passos
+## 1. Objetivos e Estrutura
 
-1. Objetivos e Estrutura
-1.1 Objetivos
+### 1.1 Objetivos
 
-Desenvolver operações CRUD completas para usuários (Create, Read, Update, Delete)
-Validar e sanitizar dados dos formulários
-Organizar código em camadas (Models, Controllers, Views) conforme o padrão MVC
+- Desenvolver operações CRUD completas para usuários (Create, Read, Update, Delete)
+- Validar e sanitizar dados dos formulários
+- Implementar autenticação (login/logout) e proteção de rotas
+- Organizar código em camadas (Models, Controllers, Views) conforme o padrão MVC
+- Aplicar conceitos de segurança na manipulação de dados do usuário
 
+### 1.2 Estrutura Atual do Projeto
 
-1.2 Estrutura Atual do Projeto
 Observando a estrutura atual do projeto, já temos:
+
+```
 projeto_vendas/
 ├── app/
 │   ├── Controllers/      # Controladores do sistema (ainda incompleto)
@@ -29,17 +33,22 @@ projeto_vendas/
 │   └── Views/            # Visualizações HTML
 │       ├── layouts/      # Layout base com Bootstrap
 │       ├── usuarios/     # Views para CRUD de usuários
-│       ├── auth/         # Views para autenticação
 │       ├── dashboard.php # Painel administrativo
 ├── public/               # Ponto de entrada (index.php já iniciado)
 │   ├── css/              # Estilos CSS
 │   └── index.php         # Front controller
 ├── vendor/               # Pacotes do Composer
 └── composer.json         # Configuração do Composer
-2. CRUD de Usuários
-2.1 Model de Usuário Completo
-O arquivo app/Models/Usuario.php já foi iniciado, mas precisa ser expandido para incluir todas as operações CRUD:
-php<?php
+```
+
+## 2. CRUD de Usuários
+
+### 2.1 Model de Usuário Completo
+
+O arquivo `app/Models/Usuario.php` já foi iniciado, mas precisa ser expandido para incluir todas as operações CRUD:
+
+```php
+<?php
 namespace App\Models;
 
 use App\Core\Database;
@@ -190,9 +199,14 @@ class Usuario {
         return $stmt->execute();
     }
 }
-2.2 Controller de Usuário
-Crie o arquivo app/Controllers/UsuarioController.php:
-php<?php
+```
+
+### 2.2 Controller de Usuário
+
+Crie o arquivo `app/Controllers/UsuarioController.php`:
+
+```php
+<?php
 namespace App\Controllers;
 
 use App\Models\Usuario;
@@ -363,9 +377,14 @@ class UsuarioController {
         return $dadosValidados;
     }
 }
-2.3 Views de Usuários
-Vamos criar o arquivo (app/Views/usuarios/form-usuario.php), para processar os dados enviados. Adicionando o código para exibir erros e para diferenciar entre novo usuário e edição:
-php<nav aria-label="breadcrumb">
+```
+
+### 2.3 Views de Usuários
+
+O formulário já existe (`app/Views/usuarios/form-usuario.php`), mas precisamos atualizar para processar os dados enviados. Adicione o código para exibir erros e para diferenciar entre novo usuário e edição:
+
+```php
+<nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
         <li class="breadcrumb-item"><a href="/usuarios">Usuários</a></li>
@@ -479,8 +498,12 @@ php<nav aria-label="breadcrumb">
         </div>
     </div>
 </form>
-Também precisamos criar a visualização da lista de usuários (app/Views/usuarios/listar-usuarios.php) para exibir os dados reais:
-php<nav aria-label="breadcrumb">
+```
+
+Também precisamos atualizar a visualização da lista de usuários (`app/Views/usuarios/listar-usuarios.php`) para exibir os dados reais:
+
+```php
+<nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
         <li class="breadcrumb-item active" aria-current="page">Usuários</li>
@@ -582,3 +605,4 @@ php<nav aria-label="breadcrumb">
         </div>
     </div>
 </div>
+```
